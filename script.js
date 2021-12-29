@@ -282,3 +282,150 @@ function calcularMedia(array) {
     return soma/(array.length);
 }
 
+//exercicio 9: Contador de asteristicos
+
+exibirAsteristicos(10);
+
+function exibirAsteristicos(linhas) {
+//Primeira Forma
+
+    //    let padrao = '';
+//    for(let linha = 1; linha <= linhas; linha++) {
+//        padrao += '*';
+//        console.log(padrao);
+//    }
+
+//Segunda Forma
+
+    for (let linha = 1; linha <= linhas; linha++) {
+        let padrao = '';
+        for (let q = 0; q < linha; q++) {
+            padrao += '*';
+        }
+        console.log(padrao);
+    }
+}
+
+//exercício 10: Exibir somente os números primos
+
+exibirNumerosPrimos(15);
+
+function exibirNumerosPrimos(limite) {
+    for (let value = 2; value <= limite; value++) {
+        if (numerosPrimos(value)) {
+            console.log(value);
+        }
+    }
+}
+
+function numerosPrimos(value) {
+    for (let divisor = 2; divisor < value; divisor++) {    
+        if (value % divisor === 0 ) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+//Factory Functions
+
+//Dentro da função vai as variaveis que serão usadas somente na função
+function criarCelular(marcaCelular,tamanhoTela,capacidadeBateria) {
+    return {
+        //se a variavel for igual o texto basta fazer assim
+        marcaCelular, //marcaCelular: marcaCelular
+        tamanhoTela,
+        capacidadeBateria,
+        ligar() {
+            console.log("Fazendo ligação...");
+        }
+    }
+}
+//agora é so usar essa função quando for criar um celular em vez de copiar e colar varias vezes as linhas de codigo
+const celular1 = criarCelular('LG', 5.5, 5000);
+console.log(celular1);
+
+//Constructor Factory
+
+function Celular(marcaCelular, tamanhoTela, capacidadeBateria) {
+    this.marcaCelular = marcaCelular,
+    this.tamanhoTela = tamanhoTela,
+    this.capacidadeBateria = capacidadeBateria,
+    this.ligar = function() {
+        console.log("Fazendo Ligação...");
+    }
+}
+
+const celular = new Celular('asus', 5.5, 5000);
+console.log(celular);
+
+//JS é muito dinâmico
+
+const mouse = {
+    cor: 'red',
+    marca: 'dazz'
+}
+mouse.velocidade = 5000; //vai acrescentar o parâmetro velocidade dentro do objeto mouse
+mouse.trocarDPI = function() {
+    console.log('mudando DPI');
+}
+delete mouse.velocidade; //vai deletar o parâmetro velocidade dentro do objeto mouse
+delete mouse.trocarDPI;
+console.log(mouse);
+
+//Clonando Objetos
+//Clonei o objeto mouse
+
+const novoObjeto = Object.assign({
+    velocidade: 50 // Posso adicionar um novo parâmetro no objeto clonado
+},mouse);
+console.log(novoObjeto);
+
+//Outro jeito de Clonar
+
+const objeto2 = {...mouse}; //E para adicionar um novo parâmetro é só colocar um virgula depois do mouse e adicionar
+console.log(objeto2)
+
+//Math
+Math.random() // Serve pra sortear um valor aleatório entre 0 e 1
+Math.max() //Serve pra mostrar o maior valor, basta colocar varios valores dentro dos parenteses
+Math.min() //Serve pra mostrar o menor valor, basta colocar varios valores dentro dos parenteses
+//TEM VARIOS METODOS MATH NO SITE MDN
+
+//String
+//Tipo primitivo
+const mensagem1 = 'mensagem';
+//Tipo Objeto
+const mensagem2 = new String('bom dia')
+
+mensagem1.length //Serve para mostrar quantos caracteres tem na String
+mensagem1[2] //Serve para mostrar a letra por posição, lembrando que começar pelo 0
+mensagem1.includes('primeiro') //Serve para verificar se a palvra tem na String, nesse caso será falso, pois não tem primeiro na String
+mensagem1.includes('mensagem') // True
+mensagem1.startsWith('mensagem') //Serve para verificar a primeira palavra da String, nesse caso será True, pois a primeira palavra é mensagem
+mensagem1.endsWith('Foto') //Serve para verificar a última palavra da String, nesse caso será False, pois a última palavra é mensagem
+mensagem2.indexOf('dia') //Serve para saber em qual posição começa, nesse caso sera 4
+mensagem2.replace('bom', 'boa') //Serve para alterar o texto da String, nesse caso ficará boa dia
+mensagem2.trim() //Serve para quando você colocar espaço demais ai ele tira os espaços a mais
+mensagem2.split() //Serve para mostrar quantas palavras tem
+//TEM VARIOS METODOS STRING NO SITE MDN
+
+
+//Template Literal
+
+const menst = `oi tudo bem 'como' vai`;
+//isso serve para escrever como quiser dentro da variável
+//Caso queira usar variavel dentro da String pode assim:
+
+const nome = 'Rafael';
+
+const mens = `oi tudo bem 'como' vai ${nome}`;
+
+//serve para colocar operações de matematica também
+
+
+//Date
+const data = new Date(); //serve para pegar a data
+const data2 = new Date('March 06 2019 09:30'); //serve para definir uma data
+//TEM VARIOS JEITOS DE DEFINIR UMA DATA É SÓ VER NO MDN
