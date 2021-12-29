@@ -180,3 +180,105 @@ function fizzBuzz(entrada) {
     }
     
 }
+
+//exercício 4: Medidor de Velocidade
+
+verificarVelocidade(80);
+
+function verificarVelocidade(velocidade) {
+    const velocidadeMax = 70;
+    kmPorPonto = 5;
+    if (velocidade <= velocidadeMax) {
+        console.log('Ok');
+    }
+    else {
+        const pontos = Math.floor(((velocidade - velocidadeMax) / kmPorPonto));
+        if (pontos >= 12) {
+            console.log('Carteira Suspensa');
+        }
+        else {
+            console.log(pontos,'pontos');
+        }
+
+    }
+
+}
+
+//exercicio 5: Par ou Ímpar
+
+parImpar(18);
+
+function parImpar(number) {
+        if (number % 2 === 0) {
+            console.log(number,'Par!')
+        }
+        else if (number % 2 !== 0) {
+            console.log(number,'Ímpar!')
+        }
+}
+
+//exercício 6: Encontrar o String
+
+let persona = {
+    name: 'John',
+    age: 18,
+    city: 'cachoeirinha',
+    work: 'programmer',
+    cpf: 0000
+};
+
+exibirPropriedades(persona);
+function exibirPropriedades(obj) {
+    for (let prop in obj) {
+        if (typeof obj[prop] === 'string') {
+            console.log(prop,obj[prop]);
+        }
+    }
+
+}
+
+//exercício 7: Múltiplos de 3 e 5
+
+somar(20);
+
+function somar(limite) {
+    let multiplosDe3 = 0;
+    let multiplosDe5 = 0;
+    for (r = 0; r <= limite; r++) {
+        if (r % 3 === 0) {
+            multiplosDe3 += r;
+            //console.log(multiplosDe3);
+        }
+        if (r % 5 === 0) {
+            multiplosDe5 += r;
+            //console.log(multiplosDe3);
+        }
+    }
+    console.log(multiplosDe3 + multiplosDe5);
+}
+
+//exercício 8: Média Escolar
+
+const array = [70,70,100];
+
+
+console.log(mediaDoAluno(array));
+
+function mediaDoAluno(notas) {
+    const media = calcularMedia(notas);
+
+    if (media < 59) return 'F';
+    if (media < 69) return 'D';
+    if (media < 79) return 'C';
+    if (media < 89) return 'B';
+    return 'A';
+
+}
+function calcularMedia(array) {
+    let soma = 0;
+    for (let v of array) {
+        soma += v;
+    }
+    return soma/(array.length);
+}
+
