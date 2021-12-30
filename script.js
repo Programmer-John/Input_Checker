@@ -401,7 +401,7 @@ const mensagem2 = new String('bom dia')
 
 mensagem1.length //Serve para mostrar quantos caracteres tem na String
 mensagem1[2] //Serve para mostrar a letra por posição, lembrando que começar pelo 0
-mensagem1.includes('primeiro') //Serve para verificar se a palvra tem na String, nesse caso será falso, pois não tem primeiro na String
+mensagem1.includes('primeiro') //Serve para verificar se a palavra tem na String, nesse caso será falso, pois não tem primeiro na String
 mensagem1.includes('mensagem') // True
 mensagem1.startsWith('mensagem') //Serve para verificar a primeira palavra da String, nesse caso será True, pois a primeira palavra é mensagem
 mensagem1.endsWith('Foto') //Serve para verificar a última palavra da String, nesse caso será False, pois a última palavra é mensagem
@@ -429,3 +429,75 @@ const mens = `oi tudo bem 'como' vai ${nome}`;
 const data = new Date(); //serve para pegar a data
 const data2 = new Date('March 06 2019 09:30'); //serve para definir uma data
 //TEM VARIOS JEITOS DE DEFINIR UMA DATA É SÓ VER NO MDN
+
+//exercicio 11: Montador de Endereço
+
+const endereco = {
+    rua: 'Loteamento',
+    cidade: 'cachoeirinha',
+    cep: 5538000
+};
+
+function exibirEndereco(endereco) {
+    for (let chave in endereco) {
+        console.log(chave,endereco[chave]);
+    } 
+}
+
+exibirEndereco(endereco);
+
+//exercicio 12: Igualdade dos Objetos
+
+function Endereco(rua,cidade,cep) {
+    this.rua = rua,
+    this.cidade = cidade,
+    this.cep = cep
+}
+const endereco1 = new Endereco('a', 'b' ,'c');
+const endereco2 = new Endereco('a', 'b', 'c');
+
+function saoIguais(endereco1,endereco2) {
+    return endereco1.rua === endereco2.rua &&
+            endereco1.cidade === endereco2.cidade &&
+            endereco1.cep === endereco2.cep
+}
+    console.log(saoIguais(endereco1, endereco2));
+
+function temEnderecoMemoriaIguais(endereco1, endereco2) {
+    return endereco1 === endereco2;
+    //ou seja ela não ocupa o mesmo espaço na mémoria
+}
+    console.log(temEnderecoMemoriaIguais(endereco1, endereco2));
+
+
+
+
+//exercicio 13: Montador de Postagem de Blog
+
+let post = {
+    titulo: 'Hello World',
+    mensagem: 'Olá Mundo',
+    autor: 'John',
+    visualizacoes: '700',
+    //Serve pra colocar um array num parametro de um objeto
+    comentarios: [{autor: 'John', mensagem: 'Olá Mundo'}],
+    estaAoVivo: true
+}
+
+console.log(post);
+
+function Post(titulo,mensagem,autor) {
+    this.titulo = titulo;
+    this.mensagem = mensagem;
+    this.autor = autor;
+    this.visualizacao = 0;
+    this.comentarios = [];
+    this.estaaovivo = false;
+}
+
+let postNew = new Post('a','b','c');
+console.log(postNew);
+
+
+//exercicio 14: Faixa de Preço
+
