@@ -499,5 +499,69 @@ let postNew = new Post('a','b','c');
 console.log(postNew);
 
 
-//exercicio 14: Faixa de Preço
+//exercicio 14: Faixa de Preço igual a do mercado livre
 
+//Primeira opção
+let faixas = [
+    {tooltip: 'até R$700', minimo: 0, maximo: 700},
+    {tooltip: 'de R$700 a R$1000', minimo: 700, maximo: 1000},
+    {tooltip: 'de R$1000 ou mais', minimo: 1000, maximo: 99999999}
+];
+
+//Segunda opção (Factory Function)
+function criaFaixaPreco(tooltip,minimo,maximo) {
+    return {
+        tooltip,
+        minimo,
+        maximo
+    }
+}
+
+let faixas2 = [
+    criaFaixaPreco('a',0,700),
+    criaFaixaPreco('b',700,1000),
+    criaFaixaPreco('c',1000,99999),
+];
+
+//Terceira opção (Constructor Function)
+function FaixaPreco(tooltip,minimo,maximo) {
+    this.tooltip = tooltip,
+    this.minimo = minimo,
+    this.maximo = maximo
+}
+
+let faixas3 = [
+    new FaixaPreco('d',0,700),
+    new FaixaPreco('e',700,1000),
+    new FaixaPreco('f',1000,99999)
+];
+
+console.log(faixas); //primeira opção
+console.log(faixas2); //segunda opção
+console.log(faixas3); //terceira opção
+
+//Arrays
+//Adicionando Elementos
+const numeros = [1,2,3];
+numeros.unshift(0); //adicionando valor no inicio do array
+numeros.splice(1,0,'c') //adicionando valor no meio do array, onde o primerio valor é o espaço que o valor vai ocupar, o segundo valor é se quer deletar algum espaço do array e o terceiro é o valor que vai ocupar
+numeros.push(5); //adicionando o valor no final do array
+console.log(numeros);
+
+//Encontrando Elementos do tipo primitivo
+const valores = [1,2,3,4,4];
+console.log(valores.indexOf(4)); //Serve para saber se o valor passado tem no array e em qual posição ele está, caso não tenha o valor ele retorna -1
+console.log(valores.lastIndexOf(4)); //Serve do mesmo jeito que o index, porém se por exemplo tiver dois 1, ele mostrará o espaço do ultimo 1
+console.log(numeros.includes(2)); //forma mais facil e atualizada de saber se existe o valor dentro do array
+
+//Encontrando Elementos do tipo referência
+const marcas = [
+    {id:1, nome:'a'},
+    {id:2, nome:'b'},
+];
+
+const marca = marcas.find(function(marca) {
+    return marca.nome === 'a';
+});
+
+console.log(marca);
