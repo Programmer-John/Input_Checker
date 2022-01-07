@@ -560,8 +560,114 @@ const marcas = [
     {id:2, nome:'b'},
 ];
 
-const marca = marcas.find(function(marca) {
+const marca = marcas.find(function(marca) { //o find serve para encontrar elementos no array dento do objeto
     return marca.nome === 'a';
 });
 
 console.log(marca);
+
+//arrow functions(versão atualizada do exemplo acima)
+
+const tvs = [
+    {id:1, nome:'a'},
+    {id:2, nome:'b'},
+]; //criei um objeto com arrays
+
+
+console.log(tvs.find(tv => tv.nome === 'b'));
+
+//Removendo Elementos
+
+const values = [1,2,3,4];
+
+const ultimo = values.pop(); //remove o ultimo numero
+console.log(ultimo);
+console.log(values);
+
+const primeiro = values.shift(); //remove o primeiro numero
+console.log(primeiro);
+console.log(values);
+
+const meio = values.splice(0,1); //primeiro valor é o indice(lugar) e o segundo valor é quantos numeros
+console.log(meio);
+console.log(values);
+
+//Esvaziando Arrays
+
+let numbers = [1,2,3,4,5];
+let outros = numbers;
+//solução 1
+//numbers = []; vai esvaziar essa variavel
+//console.log(outros); e vai pra a variavel 'outros'
+
+//solução 2 (melhor forma)
+numbers.length = 0; //isso apaga todas as referencias do array, ou seja mesmoq ue for passado pra outra variavel, ja vai está apagado, ou seja vai passar um array vazio
+console.log(numbers);
+console.log(outros);
+
+//solução 3
+numbers.splice(0,numbers.length); //o primeiro parametro deifne o local do valor e o segundo parametro quantos valores quer apagar, dai o length significa quantidade que foi passado que tem que ser 0, ou seja ira apagar tudo
+console.log(numbers);
+console.log(outros);
+
+
+//Combinando Array
+
+const one = [1,2,3];
+const secound = [4,5,6];
+
+const combinado = one.concat(secound); //o concat serve para juntar um array com outro
+console.log(combinado);
+
+const cortado = combinado.slice(2); //o slice serve para dividir o array, se deixa vazio ele passa todo o array para a variavel, se colocar algum valor ele corta a partir desse valor
+console.log(cortado);
+
+//Spread (versão mais atualizada do exemplo a cima)
+
+const combinado1 = [...one,10,20,...secound]; //o spread é os 3 pontinhos, após a virgula pode adicionar valores também
+console.log(combinado1)
+
+const clonado = [...combinado1]; //Se adicionar a uma variavel a variavel que juntou os arrays, da pra clonar
+console.log(clonado);
+
+//Foreach
+
+const numbers2 = [1,2,3,4,5];
+
+numbers2.forEach((numero,indice) => console.log(numero,indice));
+
+//Combinando Arrays
+
+const values2 = [1,2,3,4,5];
+
+const combinado2 = values2.join('.'); //O join separa cada valor pelo parametro passado
+console.log(combinado2); 
+
+const frase = "ola bem vindo ao curso";
+const re = frase.split(' ') //Split vai separar cada palavra após o espaço, retornando quantas palavras tem
+console.log(re);
+console.log(re.join('-'));
+
+//exercicio
+//Meu Jeito
+
+/*function botaoAlterar() {
+    let friends = document.getElementById('friend').value;
+    if (friends === 'John') {
+        document.getElementById('mudando').innerText = ('Você pode Entrar');
+    } else {
+        document.getElementById('mudando').innerText = ('Você não pode Entrar');
+    }
+};*/
+
+//Jeito do Professor
+
+function botaoAlterar() {
+    friends = document.getElementById('friend').value;
+    convidadosCristian = ['Amanda', 'Sabrina', 'John'];
+    if (convidadosCristian.includes(friends)) {
+        document.getElementById('mudando').innerText = ('Você pode Entrar');
+    } else {
+        document.getElementById('mudando').innerText = ('Você não pode Entrar');
+    }
+};
